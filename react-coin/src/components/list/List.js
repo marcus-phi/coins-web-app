@@ -59,10 +59,8 @@ class List extends React.Component {
         }
     }
 
-    handlePaginationClick(direction) {
-        let nextPage = this.state.page;
-        nextPage = direction === 'next' ? nextPage + 1 : nextPage - 1;
-        this.setState({ page: nextPage }, () => {
+    handlePaginationClick(page) {
+        this.setState({ page }, () => {
             // call fetchCurrencies function inside setState's callback
             this.fetchCurrencies();
         });

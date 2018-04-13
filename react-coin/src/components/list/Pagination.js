@@ -9,7 +9,14 @@ const Pagination = (props) => {
         <div className="Pagination">
             <button
                 className="Pagination-button"
-                onClick={() => handlePaginationClick('prev')}
+                onClick={() => handlePaginationClick(1)}
+                disabled={page <= 1}>
+                ⇤
+            </button>
+
+            <button
+                className="Pagination-button"
+                onClick={() => handlePaginationClick(page-1)}
                 disabled={page <= 1}>
                 &larr;
             </button>
@@ -20,9 +27,16 @@ const Pagination = (props) => {
 
             <button
                 className="Pagination-button"
-                onClick={() => handlePaginationClick('next')}
+                onClick={() => handlePaginationClick(page+1)}
                 disabled={page >= totalPages}>
                 &rarr;
+            </button>
+
+            <button
+                className="Pagination-button"
+                onClick={() => handlePaginationClick(totalPages)}
+                disabled={page >= totalPages}>
+                ⇥
             </button>
         </div>
     )
