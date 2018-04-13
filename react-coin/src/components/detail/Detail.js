@@ -19,7 +19,7 @@ class Detail extends React.Component {
     componentDidMount() {
         const currencyId = this.props.match.params.id;
 
-        this.setState({ loading: true });
+        this.setState({ loading: true, error: null });
 
         fetch(`${API_URL}/cryptocurrencies/${currencyId}`)
         .then(handleResponse)
@@ -27,7 +27,6 @@ class Detail extends React.Component {
             this.setState({
                 loading: false,
                 currency,
-                error: null,
             })
         })
         .catch(error => {

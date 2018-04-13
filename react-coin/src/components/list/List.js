@@ -25,7 +25,7 @@ class List extends React.Component {
     }
 
     fetchCurrencies() {
-        this.setState({ loading: true });
+        this.setState({ loading: true, error: null });
 
         const { page } = this.state;
 
