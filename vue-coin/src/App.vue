@@ -1,18 +1,16 @@
 <template>
   <div>
     <Header/>
-    <List/>
+    <router-view/>
   </div>
 </template>
 
 <script>
 import Header from './components/common/Header.vue';
-import List from './components/list/List.vue';
 
 export default {
   components: {
     Header,
-    List,
   }
 }
 </script>
