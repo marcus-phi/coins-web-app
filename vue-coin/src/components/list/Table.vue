@@ -10,7 +10,10 @@
                 </tr>
             </thead>
             <tbody class="Table-body">
-                <tr v-for="currency in currencies" :key="currency.id">
+                <tr v-for="currency in currencies"
+                    :key="currency.id"
+                    @click="goToCurrency(currency.id)"
+                >
                     <td>
                         <span class="Table-rank">{{currency.rank}}</span>
                         {{currency.name}}
@@ -43,6 +46,11 @@ export default {
         currencies: {
             type: Array,
             required: true,
+        }
+    },
+    methods: {
+        goToCurrency: function(currencyId) {
+            this.$router.push(`currency/${currencyId}`);
         }
     }
 }

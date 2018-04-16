@@ -1,16 +1,15 @@
 <template>
-    <div>
+    <span>
         <span v-if="percent > 0" class="percent-raised">{{percent}}% &uarr;</span>
         <span v-else-if="percent < 0" class="percent-fallen">{{percent}}% &darr;</span>
         <span v-else>{{percent}}</span>
-    </div>
+    </span>
 </template>
 
 <script>
 export default {
     props: {
         percent: {
-            type: Number,
             required: true,
         },
     }
