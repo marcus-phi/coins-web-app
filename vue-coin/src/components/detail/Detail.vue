@@ -55,20 +55,30 @@ export default {
             required: true,
         }
     },
-    mounted: function() {
-        this.loading = true;
-        this.error = null;
+    methods: {
+        fetchCurrency: function(currencyId) {
+            this.loading = true;
+            this.error = null;
 
-        fetch(`${API_URL}/cryptocurrencies/${this.id}`)
-        .then(handleResponse)
-        .then(currency => {
-            this.loading = false;
-            this.currency = currency;
-        })
-        .catch(error => {
-            this.loading = false,
-            this.error = error.errorMessage;
-        })
+            fetch(`${API_URL}/cryptocurrencies/${currencyId}`)
+            .then(handleResponse)
+            .then(currency => {
+                this.loading = false;
+                this.currency = currency;
+            })
+            .catch(error => {
+                this.loading = false,
+                this.error = error.errorMessage;
+            })
+        }
+    },
+    watch: {
+        id: function() {
+            this.fetchCurrency(this.id);
+        }
+    },
+    mounted: function() {
+        this.fetchCurrency(this.id);
     }
 }
 </script>

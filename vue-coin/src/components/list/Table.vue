@@ -47,7 +47,7 @@ export default {
     },
     methods: {
         goToCurrency: function(currencyId) {
-            this.$router.push(`currency/${currencyId}`);
+            this.$router.push(`/currency/${currencyId}`);
         }
     }
 }

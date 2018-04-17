@@ -1,17 +1,24 @@
 <template>
-    <div class="Loading"/>
+    <div class="Loading" :style="{ width, height }"/>
 </template>
 
 <script>
 export default {
-
+  props: {
+    width: {
+      type: String,
+      default: '28px',
+    },
+    height: {
+      type: String,
+      default: '28px',
+    }
+  }
 }
 </script>
 
 <style>
 .Loading {
-  width: 28px;
-  height: 28px;
   display: inline-block;
   border: 2px solid #fff;
   border-right-color: transparent;

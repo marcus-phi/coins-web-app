@@ -3,11 +3,18 @@
       <router-link to="/">
         <img src="./logo.png" alt="logo" class="Header-logo"/>
       </router-link>
+
+      <Search/>
     </div>
 </template>
 
 <script>
+import Search from './Search';
+
 export default {
+  components: {
+    Search
+  }
 }
 </script>
 
