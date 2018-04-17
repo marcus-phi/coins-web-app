@@ -57,6 +57,7 @@ export default {
     },
     mounted: function() {
         this.loading = true;
+        this.error = null;
 
         fetch(`${API_URL}/cryptocurrencies/${this.id}`)
         .then(handleResponse)

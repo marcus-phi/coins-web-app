@@ -42,6 +42,7 @@ export default {
     methods: {
         fetchCurrencies: function() {
             this.loading = true;
+            this.error = null;
 
             fetch(`${API_URL}/cryptocurrencies?page=${this.page}&perPage=20`)
             .then(handleResponse)
