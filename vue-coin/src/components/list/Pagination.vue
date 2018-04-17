@@ -63,7 +63,7 @@ export default {
   text-align: center;
   border: none;
   border-radius: 16px;
-  background-color: #4997e5;
+  background-color: #49E549;
   transition: background-color .2s;
   color: white;
   cursor: pointer;
@@ -73,7 +73,7 @@ export default {
 }
 
 .Pagination-button:hover {
-  background-color: #457cb2;
+  background-color: #45B245;
 }
 
 .Pagination-button:focus {
@@ -81,7 +81,7 @@ export default {
 }
 
 .Pagination-button:disabled {
-  background-color: #1f364d;
+  background-color: #1F4D1F;
   cursor: not-allowed;
 }
 

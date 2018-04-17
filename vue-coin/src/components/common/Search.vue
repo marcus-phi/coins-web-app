@@ -103,7 +103,7 @@ export default {
 
 .Search-input {
   box-sizing: border-box;
-  background-color: #1f364d;
+  background-color: #1F4D1F;
   border-radius: 4px;
   border: 0;
   padding-left: 35px;
@@ -120,7 +120,7 @@ export default {
 }
 
 .Search ::placeholder {
-  color: #9cb3c9;
+  color: #9CC99C;
   opacity: 1;
 }
 
@@ -135,17 +135,17 @@ export default {
   width: 100%;
   max-height: 299px;
   overflow-y: auto;
-  background-color: #0f273d;
-  border: 1px solid #0c2033;
+  background-color: #0F3D0F;
+  border: 1px solid #0C330C;
   border-radius: 4px;
-  box-shadow: 0px 0px 40px 0px#1f364d;
+  box-shadow: 0px 0px 40px 0px#1F4D1F;
   margin-top: 10px;
 }
 
 .Search-result {
-  color: #9cb3c9;
+  color: #9CC99C;
   padding: 15px 0 15px 35px;
-  border-bottom: 2px solid #0c2033;
+  border-bottom: 2px solid #0C330C;
   cursor: pointer;
 }
 
@@ -154,8 +154,8 @@ export default {
 }
 
 .Search-no-result {
-  color: #9cb3c9;
+  color: #9CC99C;
   padding: 15px 0 15px 35px;
-  border-bottom: 1px solid #0f273d;
+  border-bottom: 1px solid #0F3D0F;
 }
 </style>

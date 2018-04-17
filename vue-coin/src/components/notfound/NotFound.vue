@@ -20,7 +20,7 @@ export default {
 
 .NotFound-title {
   font-weight: 400;
-  color: #9cb3c9;
+  color: #9CC99C;
 }
 
 .NotFound-link {
@@ -28,7 +28,7 @@ export default {
   margin-top: 40px;
   color: #fff;
   text-decoration: none;
-  border: 1px solid #9cb3c9;
+  border: 1px solid #9CC99C;
   border-radius: 4px;
   padding: 18px;
   transition: border .2s;

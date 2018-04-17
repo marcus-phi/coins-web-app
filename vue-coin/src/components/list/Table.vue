@@ -65,12 +65,12 @@ export default {
 }
 
 .Table-head {
-  background-color: #0c2033;
+  background-color: #0C330C;
 }
 
 .Table-head tr th {
   padding: 10px 20px;
-  color: #9cb3c9;
+  color: #9CC99C;
   text-align: left;
   font-size: 14px;
   font-weight: 400;
@@ -78,24 +78,24 @@ export default {
 
 .Table-body {
   text-align: left;
-  background-color: #0f273d;
+  background-color: #0F3D0F;
 }
 
 .Table-body tr td {
   padding: 24px 20px;
-  border-bottom: 2px solid #0c2033;
+  border-bottom: 2px solid #0C330C;
   color: #fff;
   cursor: pointer;
 }
 
 .Table-rank {
-  color: #9cb3c9;
+  color: #9CC99C;
   margin-right: 18px;
   font-size: 12px;
 }
 
 .Table-dollar {
-  color: #9cb3c9;
+  color: #9CC99C;
   margin-right: 6px;
 }
 

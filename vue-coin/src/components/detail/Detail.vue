@@ -104,7 +104,7 @@ export default {
   margin-top: 30px;
   padding: 40px 40px 0;
   border-radius: 4px;
-  box-shadow: 0px 0px 40px 0px#1f364d;
+  box-shadow: 0px 0px 40px 0px#1F4D1F;
 }
 
 .Detail-item {
@@ -113,7 +113,7 @@ export default {
 
 .Detail-value {
   border-radius: 20px;
-  background-color: #1f364d;
+  background-color: #1F4D1F;
   font-size: 14px;
   padding: 8px 12px;
   margin-left: 10px;
@@ -121,14 +121,14 @@ export default {
 
 .Detail-title {
   display: block;
-  color: #9cb3c9;
+  color: #9CC99C;
   font-size: 12px;
   font-weight: bold;
   margin-bottom: 10px;
 }
 
 .Detail-dollar {
-  color: #9cb3c9;
+  color: #9CC99C;
   margin-right: 6px;
 }
 </style>

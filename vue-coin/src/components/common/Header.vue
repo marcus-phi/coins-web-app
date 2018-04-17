@@ -24,7 +24,7 @@ export default {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  background-color: #0f273d;
+  background-color: #0F3D0F;
   width: 100%;
   height: 80px;
 }
