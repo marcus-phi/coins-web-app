@@ -3,7 +3,7 @@
         <div v-if="loading" class="loading-container"><Loading/></div>
         <div v-else-if="error" class="error">{{error}}</div>
         <div v-else class="Detail">
-            <h1 class="Detail-heading">{{currency.name}} {{currency.symbol}}</h1>
+            <h1 class="Detail-heading">{{currency.name}} ({{currency.symbol}})</h1>
 
             <div class="Detail-container">
                 <div class="Detail-item">
@@ -17,17 +17,14 @@
                 </div>
                 <div class="Detail-item">
                     <span class="Detail-title">Market cap</span>
-                    <span class="Detail-dollar">$</span>
-                    {{currency.marketCap}}
+                    <span class="Detail-dollar">$</span>{{currency.marketCap}}
                 </div>
                 <div class="Detail-item">
                     <span class="Detail-title">24H Volume</span>
-                    <span class="Detail-dollar">$</span>
-                    {{currency.volume24h}}
+                    <span class="Detail-dollar">$</span>{{currency.volume24h}}
                 </div>
                 <div class="Detail-item">
-                    <span class="Detail-title">Total supply</span>
-                    {{currency.totalSupply}}
+                    <span class="Detail-title">Total supply</span>{{currency.totalSupply}}
                 </div>
             </div>
         </div>

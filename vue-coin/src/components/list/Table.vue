@@ -15,16 +15,13 @@
                     @click="goToCurrency(currency.id)"
                 >
                     <td>
-                        <span class="Table-rank">{{currency.rank}}</span>
-                        {{currency.name}}
+                        <span class="Table-rank">{{currency.rank}}</span>{{currency.name}}
                     </td>
                     <td>
-                        <span class="Table-dollar">$</span>
-                        {{currency.price}}
+                        <span class="Table-dollar">$</span>{{currency.price}}
                     </td>
                     <td>
-                        <span class="Table-dollar">$</span>
-                        {{currency.marketCap}}
+                        <span class="Table-dollar">$</span>{{currency.marketCap}}
                     </td>
                     <td>
                         <PercentChange :percent="currency.percentChange24h"/>
