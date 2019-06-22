@@ -10,7 +10,9 @@
     },
     "resolutions": {
         "browserslist": "4.6.2",
-        "caniuse-lite": "1.0.30000974"
+        "caniuse-lite": "1.0.30000974",
+        "eslint": "4.18.2",
+        "stringstream": "0.0.6"
     },
     "scripts": {
         "start": "react-scripts start",
