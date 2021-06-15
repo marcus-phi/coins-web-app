@@ -1,56 +1,63 @@
 <template>
-    <div class="Table-container">
-        <table class="Table">
-            <thead class="Table-head">
-                <tr>
-                    <th>Cryptocurrency</th>
-                    <th>Price</th>
-                    <th>Market Cap</th>
-                    <th>24H Change</th>
-                </tr>
-            </thead>
-            <tbody class="Table-body">
-                <tr v-for="currency in currencies"
-                    :key="currency.id"
-                    @click="goToCurrency(currency.id)"
-                >
-                    <td>
-                        <span class="Table-rank">{{currency.rank}}</span>{{currency.name}}
-                    </td>
-                    <td>
-                        <span class="Table-dollar">$</span>{{currency.price}}
-                    </td>
-                    <td>
-                        <span class="Table-dollar">$</span>{{currency.marketCap}}
-                    </td>
-                    <td>
-                        <PercentChange :percent="currency.percentChange24h"/>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+  <div class="Table-container">
+    <table class="Table">
+      <thead class="Table-head">
+        <tr>
+          <th>Cryptocurrency</th>
+          <th>Price</th>
+          <th>Market Cap</th>
+          <th>24H Change</th>
+        </tr>
+      </thead>
+      <tbody class="Table-body">
+        <tr
+          v-for="currency in currencies"
+          :key="currency.id"
+          @click="goToCurrency(currency.id)"
+        >
+          <td>
+            {{ currency.name }}
+          </td>
+          <td>
+            <span class="Table-dollar">$</span
+            >{{ displayNumber(currency.current_price) }}
+          </td>
+          <td>
+            <span class="Table-dollar">$</span
+            >{{ displayNumber(currency.market_cap) }}
+          </td>
+          <td>
+            <PercentChange :percent="currency.price_change_percentage_24h" />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </template>
 
 <script>
-import PercentChange from '../common/PercentChange.vue';
+import PercentChange from "../common/PercentChange.vue";
+import { displayLocaleNumber } from '../../helpers';
 
 export default {
-    components: {
-        PercentChange,
+  components: {
+    PercentChange,
+  },
+  props: {
+    currencies: {
+      type: Array,
+      required: true,
     },
-    props: {
-        currencies: {
-            type: Array,
-            required: true,
-        }
+  },
+  methods: {
+    goToCurrency: function(currencyId) {
+      this.$router.push(`/currency/${currencyId}`);
     },
-    methods: {
-        goToCurrency: function(currencyId) {
-            this.$router.push(`/currency/${currencyId}`);
-        }
+    displayNumber: function(value) {
+        return displayLocaleNumber(value);
     }
-}
+  },
+};
 </script>
 
 <style>
@@ -65,12 +72,12 @@ export default {
 }
 
 .Table-head {
-  background-color: #0C330C;
+  background-color: #0c330c;
 }
 
 .Table-head tr th {
   padding: 10px 20px;
-  color: #9CC99C;
+  color: #9cc99c;
   text-align: left;
   font-size: 14px;
   font-weight: 400;
@@ -78,25 +85,24 @@ export default {
 
 .Table-body {
   text-align: left;
-  background-color: #0F3D0F;
+  background-color: #0f3d0f;
 }
 
 .Table-body tr td {
   padding: 24px 20px;
-  border-bottom: 2px solid #0C330C;
+  border-bottom: 2px solid #0c330c;
   color: #fff;
   cursor: pointer;
 }
 
 .Table-rank {
-  color: #9CC99C;
+  color: #9cc99c;
   margin-right: 18px;
   font-size: 12px;
 }
 
 .Table-dollar {
-  color: #9CC99C;
+  color: #9cc99c;
   margin-right: 6px;
 }
-
 </style>

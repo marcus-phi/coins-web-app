@@ -47,6 +47,7 @@ export default {
             searchResults: [],
             searchQuery: '',
             loading: false,
+            currencies: []
         }
     },
     methods: {
@@ -62,13 +63,16 @@ export default {
             if (!this.searchQuery) return;
 
             this.loading = true;
-            fetch(`${API_URL}/autocomplete?searchQuery=${this.searchQuery}`)
-            .then(handleResponse)
-            .then(result => {
-                this.loading = false;
-                this.searchResults = result;
-            })
+            this.searchResults = this.currencies.filter(c => c.name.toLowerCase().startsWith(this.searchQuery.toLowerCase()));
+            this.loading = false;
         }
+    },
+    mounted: function() {
+        fetch(`${API_URL}/coins/list?include_platform=false`)
+            .then(handleResponse)
+            .then(currencies => {
+                this.currencies = currencies;
+            });
     }
 }
 </script>

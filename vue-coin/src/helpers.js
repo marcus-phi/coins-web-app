@@ -3,3 +3,7 @@ export const handleResponse = response => {
         return response.ok ? json : Promise.reject(json);
     });
 }
+
+export const displayLocaleNumber = value => {
+    return value == null ? "" : value.toLocaleString('en');
+}
