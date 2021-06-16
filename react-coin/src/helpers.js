@@ -24,3 +24,7 @@ export const renderChangePercent = percent => {
         return <span>{percent}</span>
     }
 }
+
+export const displayLocaleNumber = value => {
+    return value == null ? "" : value.toLocaleString('en');
+}

@@ -29,17 +29,22 @@ class List extends React.Component {
 
         const { page } = this.state;
 
-        // API Doc: https://udilia.com/docs/cryptocurrencies/v1
-        fetch(`${API_URL}/cryptocurrencies?page=${page}&perPage=20`)
+        fetch(`${API_URL}/coins/list?include_platform=false`)
         .then(handleResponse)
-        .then(data => {
-            const { currencies, totalPages } = data;
+        .then((data) => {
+            let totalPages = Math.ceil(data.length / 20);
 
-            this.setState({
-                currencies,
-                totalPages,
-                loading: false
-            });
+            return fetch(
+                `${API_URL}/coins/markets?vs_currency=usd&order=market_cap_desc&page=${page}&per_page=20&sparkline=false&price_change_percentage=24h`
+            )
+                .then(handleResponse)
+                .then((currencies) => {
+                    this.setState({
+                        currencies,
+                        totalPages,
+                        loading: false
+                    });
+                });
         })
         .catch(error => {
             this.setState({

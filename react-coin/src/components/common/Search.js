@@ -14,6 +14,7 @@ class Search extends React.Component {
             searchResults: [],
             searchQuery: '',
             loading: false,
+            currencies: []
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -31,13 +32,10 @@ class Search extends React.Component {
 
         this.setState({ loading: true });
 
-        fetch(`${API_URL}/autocomplete?searchQuery=${searchQuery}`)
-        .then(handleResponse)
-        .then(result => {
-            this.setState({
-                loading: false,
-                searchResults: result,
-            });
+        const { currencies } = this.state;
+        this.setState({
+            searchResults: currencies.filter(c => c.name.toLowerCase().startsWith(searchQuery.toLowerCase())),
+            loading: false
         });
     }
 
@@ -82,6 +80,14 @@ class Search extends React.Component {
                 </div>
             );
         }
+    }
+
+    componentDidMount() {
+        fetch(`${API_URL}/coins/list?include_platform=false`)
+            .then(handleResponse)
+            .then(currencies => {
+                this.setState({ currencies });
+            });
     }
 
     render() {

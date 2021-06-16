@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { renderChangePercent } from '../../helpers';
+import { renderChangePercent, displayLocaleNumber } from '../../helpers';
 import './Table.css';
 
 const Table = (props) => {
@@ -24,19 +24,18 @@ const Table = (props) => {
                         key={currency.id}
                         onClick={() => history.push(`/currency/${currency.id}`)}>
                         <td>
-                            <span className="Table-rank">{currency.rank}</span>
                             {currency.name}
                         </td>
                         <td>
                             <span className="Table-dollar">$</span>
-                            {currency.price}
+                            {displayLocaleNumber(currency.current_price)}
                         </td>
                         <td>
                             <span className="Table-dollar">$</span>
-                            {currency.marketCap}
+                            {displayLocaleNumber(currency.market_cap)}
                         </td>
                         <td>
-                            {renderChangePercent(currency.percentChange24h)}
+                            {renderChangePercent(currency.price_change_percentage_24h)}
                         </td>
                     </tr>
                 ))}

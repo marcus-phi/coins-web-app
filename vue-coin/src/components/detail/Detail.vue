@@ -7,7 +7,7 @@
 
             <div class="Detail-container">
                 <div class="Detail-item">
-                    Price <span class="Detail-value">$ {{currency.market_data.current_price.usd.toLocaleString('en')}}</span>
+                    Price <span class="Detail-value">$ {{displayNumber(currency.market_data.current_price.usd)}}</span>
                 </div>
                 <div class="Detail-item">
                     Rank <span class="Detail-value">{{currency.market_data.market_cap_rank}}</span>
@@ -17,11 +17,11 @@
                 </div>
                 <div class="Detail-item">
                     <span class="Detail-title">Market cap</span>
-                    <span class="Detail-dollar">$</span>{{currency.market_data.market_cap.usd.toLocaleString('en')}}
+                    <span class="Detail-dollar">$</span>{{displayNumber(currency.market_data.market_cap.usd) }}
                 </div>
                 <div class="Detail-item">
                     <span class="Detail-title">Volume</span>
-                    <span class="Detail-dollar">$</span>{{currency.market_data.total_volume.usd.toLocaleString('en')}}
+                    <span class="Detail-dollar">$</span>{{displayNumber(currency.market_data.total_volume.usd)}}
                 </div>
                 <div class="Detail-item">
                     <span class="Detail-title">Total supply</span>{{displayNumber(currency.market_data.total_supply)}}
