@@ -1,11 +1,12 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { renderChangePercent, displayLocaleNumber } from '../../helpers';
 import './Table.css';
+import { useNavigate } from 'react-router-dom';
 
 const Table = (props) => {
-    const { currencies, history } = props;
+    const { currencies } = props;
+    const navigate = useNavigate();
 
     return (
         <div className="Table-container">
@@ -22,7 +23,7 @@ const Table = (props) => {
                 {currencies.map(currency => (
                     <tr
                         key={currency.id}
-                        onClick={() => history.push(`/currency/${currency.id}`)}>
+                        onClick={() => navigate(`/currency/${currency.id}`)}>
                         <td>
                             {currency.name}
                         </td>
@@ -47,7 +48,6 @@ const Table = (props) => {
 
 Table.propTypes = {
     currencies: PropTypes.array.isRequired,
-    history: PropTypes.object.isRequired,
 }
 
-export default withRouter(Table);
+export default Table;

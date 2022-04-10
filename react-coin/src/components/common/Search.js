@@ -1,56 +1,21 @@
-import React from 'react';
-import { withRouter } from 'react-router-dom';
-import Loading from './Loading';
+import React, { useState, useEffect } from 'react';
 import { API_URL } from '../../config';
 import { handleResponse } from '../../helpers';
 import './Search.css';
+import { useNavigate } from 'react-router-dom';
 
-class Search extends React.Component {
+const Search = () => {
+    const [currencies, setCurrencies] = useState([]);
+    const [searchQuery, setSearchQuery] = useState('');
+    const navigate = useNavigate();
+    const searchResults = !searchQuery ? [] : currencies.filter(c => c.name.toLowerCase().startsWith(searchQuery.toLowerCase()));
 
-    constructor() {
-        super();
-
-        this.state = {
-            searchResults: [],
-            searchQuery: '',
-            loading: false,
-            currencies: []
-        };
-
-        this.handleChange = this.handleChange.bind(this);
-        this.handleRedirect = this.handleRedirect.bind(this);
+    const handleRedirect = (currencyId) => {
+        setSearchQuery('');
+        navigate(`/currency/${currencyId}`);
     }
 
-    handleChange(event) {
-        const searchQuery = event.target.value;
-
-        this.setState({ searchQuery });
-
-        if (!searchQuery) {
-            return '';
-        }
-
-        this.setState({ loading: true });
-
-        const { currencies } = this.state;
-        this.setState({
-            searchResults: currencies.filter(c => c.name.toLowerCase().startsWith(searchQuery.toLowerCase())),
-            loading: false
-        });
-    }
-
-    handleRedirect(currencyId) {
-        this.setState({
-            searchQuery: '',
-            searchResults: [],
-        });
-
-        this.props.history.push(`/currency/${currencyId}`);
-    }
-
-    renderSearchResults() {
-        const { searchResults, searchQuery, loading } = this.state;
-
+    const renderSearchResults = () => {
         if (!searchQuery) {
             return '';
         }
@@ -62,7 +27,7 @@ class Search extends React.Component {
                     <div
                         key={result.id}
                         className="Search-result"
-                        onClick={() => this.handleRedirect(result.id)}
+                        onClick={() => handleRedirect(result.id)}
                     >
                         {result.name} ({result.symbol})
                     </div>
@@ -71,53 +36,38 @@ class Search extends React.Component {
             );
         }
         
-        if (!loading) {
-            return (
-                <div className="Search-result-container">
-                    <div className="Search-no-result">
-                        No results found.
-                    </div>
-                </div>
-            );
-        }
-    }
-
-    componentDidMount() {
-        fetch(`${API_URL}/coins/list?include_platform=false`)
-            .then(handleResponse)
-            .then(currencies => {
-                this.setState({ currencies });
-            });
-    }
-
-    render() {
-        const { loading, searchQuery } = this.state;
-
         return (
-            <div className="Search">
-                <span className="Search-icon"/>
-
-                <input
-                    className="Search-input"
-                    type="text"
-                    placeholder="Currency name"
-                    onChange={this.handleChange}
-                    value={searchQuery}
-                />
-
-                {loading &&
-                <div className="Search-loading">
-                    <Loading
-                        width='12px'
-                        height='12px'
-                    />
+            <div className="Search-result-container">
+                <div className="Search-no-result">
+                    No results found.
                 </div>
-                }
-
-                {this.renderSearchResults()}
             </div>
         );
     }
+
+    useEffect(() => {
+        fetch(`${API_URL}/coins/list?include_platform=false`)
+            .then(handleResponse)
+            .then(currencies => {
+                setCurrencies(currencies);
+            });
+    }, []);
+
+    return (
+        <div className="Search">
+            <span className="Search-icon"/>
+
+            <input
+                className="Search-input"
+                type="text"
+                placeholder="Currency name"
+                onChange={(evt) => setSearchQuery(evt.target.value)}
+                value={searchQuery}
+            />
+
+            {renderSearchResults()}
+        </div>
+    );
 }
 
-export default withRouter(Search);
+export default Search;

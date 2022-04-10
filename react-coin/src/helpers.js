@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 
 /*
     Fetch error helper
@@ -27,4 +27,10 @@ export const renderChangePercent = percent => {
 
 export const displayLocaleNumber = value => {
     return value == null ? "" : value.toLocaleString('en');
+}
+
+export const usePrevious = value => {
+    const ref = useRef();
+    useEffect(() => { ref.prevValue = value });
+    return ref.prevValue;
 }
