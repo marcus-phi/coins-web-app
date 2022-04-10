@@ -80,7 +80,7 @@ export default {
             this.fetchCurrency(this.id);
         }
     },
-    mounted: function() {
+    beforeMount: function() {
         this.fetchCurrency(this.id);
     }
 }
